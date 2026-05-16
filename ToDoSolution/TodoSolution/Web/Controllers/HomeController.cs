@@ -28,10 +28,13 @@ namespace NTierTodoApp.Controllers
             taskService.CompleteTask(id);
             return RedirectToAction("Index");
         }
-        //تنفيذ إجراء لحذف المهمة :TODO //
         [HttpPost]
         public IActionResult DeleteTask(int id)
         {
+            
+            //تنفيذ إجراء لحذف المهمة :TODO //
+            taskService.DeleteTask(id);
+
             //TaskService استدعاء دالة حذف المهمة في :TODO //
             return RedirectToAction("Index");
         }

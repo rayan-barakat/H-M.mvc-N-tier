@@ -2,35 +2,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<title>المهام إدارة – n-tier</title>
+    <meta charset="utf-8" />
+    <title>المهام إدارة – n-tier</title>
 </head>
 <body>
-<h1>المهام قائمة) n-tier)</h1>
-<ul>
-@foreach (var task in Model)
-{
-<li>
-@if(task.IsComplete)
-{
-<s>@task.Title</s>
-}
-else
-{
-@task.Title
-<form method="post" asp-action="CompleteTask" style="display:inline;">
-<input type="hidden" name="id" value="@task.Id" />
-<button type="submit">اكتملت</button>
-</form>
-}
+    <h1>المهام قائمة) n-tier)</h1>
+    <ul>
+        @foreach (var task in Model)
+        {
+            <li>
+                @if(task.IsComplete)
+                {
+                    <s>@task.Title</s>
+                }
+                else
+                {
+                    @task.Title
+                    <form method="post" asp-action="CompleteTask" style="display:inline;">
+                        <input type="hidden" name="id" value="@task.Id" />
+                        <button type="submit">اكتملت</button>
+                    </form>
+                }
 
-<!--إضافة زر حذف المهمة :TODO -->
-</li>
-}
-</ul>
-<form method="post" asp-action="AddTask">
-<input type="text" name="title" placeholder="جديدة مهمة أضف "/>
-<button type="submit">إضافة</button>
-</form>
+                <!--إضافة زر حذف المهمة :TODO -->
+                <form method="post" asp-action="DeleteTask" style="display:inline;">
+                    <input type="hidden" name="id" value="@task.Id" />
+                    <button type="submit">حذف</button>
+                </form>
+            </li>
+            
+        }
+    </ul>
+    <form method="post" asp-action="AddTask">
+        <input type="text" name="title" placeholder="جديدة مهمة أضف "/>
+        <button type="submit">إضافة</button>
+    </form>
 </body>
 </html>

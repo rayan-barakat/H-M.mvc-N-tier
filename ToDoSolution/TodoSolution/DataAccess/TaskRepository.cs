@@ -27,7 +27,13 @@ new TaskItem { Id = 2, Title = "ثانية مهمة", IsComplete = false }
         public void Delete(int id)
         {
             //id ابحث عن المهمة باستخدام :TODO 
+            var task = GetById(id);
+            
             //إذا كانت المهمة موجودة، قم بإزالتها من القائمة :TODO
+            if (task != null)
+            {
+                tasks.Remove(task);
+            }
         }
     }
 }
